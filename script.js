@@ -11,12 +11,18 @@ function createGrid(gridSize) {
     }
 
     var gridBox = container.querySelectorAll('div');
-    gridBox.forEach(gridBox => gridBox.style.backgroundColor = "black");
+    gridBox.forEach(gridBox => gridBox.style.backgroundColor = "white");
     gridBox.forEach(gridBox => gridBox.addEventListener('mouseover', addColour));
 }
 
 function addColour() {
-    this.style.backgroundColor = "lime";
+    var rgbavalue = getRandomRGBAValue();
+    this.style.backgroundColor = rgbavalue;
+}
+
+function getRandomRGBAValue() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
 function promptUser() {
