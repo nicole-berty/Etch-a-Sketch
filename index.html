@@ -2,15 +2,24 @@
 <html>
     <head>
         <title>Etch-a-Sketch</title>
-        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">        
     </head>
     <body>
-        <h1>Digital Etch-a-Sketch</h1>
-        <button onClick="promptUser()">Make New Grid - Random Colours on Hover</button>
-        <button id="opacityButton">Make New Grid - Increase Opacity on Hover</button>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <h1>Digital Etch-a-Sketch</h1><br>
+                <button onClick="promptUser()">Make New Grid - Random Colours on Hover</button>
+                <button id="opacityButton">Make New Grid - Increase Opacity on Hover</button>
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="content">
         <div class="container">
 
         </div>
+    </div>
         <script src="script.js"></script>
     </body>
 </html>
