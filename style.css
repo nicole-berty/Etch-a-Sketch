@@ -1,5 +1,12 @@
+button {
+    padding: 5px;
+    margin: 10px;
+    color: pink;
+    background-color: grey;
+}
+
 .container {
-    border:  1px solid #0000FF;
+    border:  1px solid purple;
 }
 
 .container {

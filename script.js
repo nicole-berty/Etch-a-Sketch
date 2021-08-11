@@ -1,6 +1,14 @@
 const container = document.querySelector('.container');
+var opacityEnabled = false;
+document.getElementById('opacityButton').onclick = function() {
+    opacityEnabled = true;
+    promptUser();
+}
 
 function createGrid(gridSize) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
     var gridArea = gridSize * gridSize;
     for(let i = 1; i <= gridArea; i++) {
         var gridDiv = document.createElement('div');
@@ -11,8 +19,14 @@ function createGrid(gridSize) {
     }
 
     var gridBox = container.querySelectorAll('div');
-    gridBox.forEach(gridBox => gridBox.style.backgroundColor = "white");
-    gridBox.forEach(gridBox => gridBox.addEventListener('mouseover', addColour));
+    if(opacityEnabled == true) {
+        gridBox.forEach(gridBox => gridBox.style.backgroundColor = "black");
+        gridBox.forEach(gridBox => gridBox.style.opacity = 0.1);
+        gridBox.forEach(gridBox => gridBox.addEventListener('mouseover', addOpacity));
+        opacityEnabled = false;
+    } else {
+        gridBox.forEach(gridBox => gridBox.addEventListener('mouseover', addColour));
+    }
 }
 
 function addColour() {
@@ -29,16 +43,15 @@ function promptUser() {
     do{
         var size = parseInt(window.prompt("Enter the number of squares the new grid should have on each side - must be between 1 and 100.", ""), 10);
     } while (isNaN(size) || size > 100 || size < 1);
-    clearGrid();
     createGrid(size);
 }
 
-function clearGrid() {
-    var boxes = document.getElementsByClassName("gridBoxes");
-    for(var i = 0; i < boxes.length; i++) {
-        boxes[i].style.backgroundColor = 'black';
-       boxes[i].remove();
+function addOpacity() {
+    var currentOpacity = +this.style.opacity;
+    if (currentOpacity < 1) {
+        currentOpacity += 0.1;
     }
+    this.style.opacity = currentOpacity;
 }
 
 createGrid(16);
